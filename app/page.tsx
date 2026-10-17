@@ -1,9 +1,7 @@
 async function getWordPressPosts() {
   const apiUrl = process.env.NEXT_PUBLIC_WORDPRESS_API_URL;
 
-  if (!apiUrl) {
-    return [];
-  }
+  if (!apiUrl) return [];
 
   try {
     const res = await fetch(apiUrl, {
@@ -31,7 +29,6 @@ async function getWordPressPosts() {
     const { data } = await res.json();
     return data?.posts?.nodes || [];
   } catch (error) {
-    console.error('WordPress bağlantı hatası:', error);
     return [];
   }
 }
